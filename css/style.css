@@ -48,3 +48,83 @@
   text-decoration: none;
   font-weight: bold;
 }
+/* OPS CENTER HERO */
+.hero-ops {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(5,15,30,0.95), rgba(5,15,30,0.6)),
+    url("https://upload.wikimedia.org/wikipedia/commons/4/4a/AirAsia_A320.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 100px 60px 60px;
+  color: white;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero-ops h1 {
+  font-size: 64px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #00b3ff;
+}
+
+.hero-ops h2 {
+  font-size: 28px;
+  font-weight: 500;
+  color: #cfd8e3;
+  margin-bottom: 25px;
+}
+
+.hero-text {
+  font-size: 18px;
+  max-width: 700px;
+  color: #cfd8e3;
+  border-left: 4px solid #00b3ff;
+  padding-left: 20px;
+}
+
+/* OPS CARDS */
+.ops-cards {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.ops-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ops-card h3 {
+  color: #00b3ff;
+  margin-bottom: 10px;
+}
+
+/* TOPBAR REFINEMENT */
+.topbar {
+  background: #ffffff;
+  color: #111;
+  padding: 15px 30px;
+}
+
+.topbar nav a {
+  color: #222;
+}
+
+.discord-link {
+  background: #0a1a2f;
+  color: white !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
