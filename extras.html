@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Seat & Meal Selection</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<div class="bg-white p-10 rounded-2xl shadow-lg max-w-md w-full">
+
+    <h1 class="text-2xl font-bold mb-6 text-center">
+        Customize Your Flight
+    </h1>
+
+    <form id="extrasForm" class="space-y-6">
+
+        <!-- Seat Selection -->
+        <div>
+            <label class="block font-semibold mb-2">Seat Preference</label>
+            <select id="seat" class="w-full border rounded-lg p-3">
+                <option>Window</option>
+                <option>Aisle</option>
+                <option>Middle</option>
+                <option>Exit Row</option>
+            </select>
+        </div>
+
+        <!-- Meal Selection -->
+        <div>
+            <label class="block font-semibold mb-2">Meal Preference</label>
+            <select id="meal" class="w-full border rounded-lg p-3">
+                <option>Vegetarian</option>
+                <option>Non-Vegetarian</option>
+                <option>Vegan</option>
+                <option>Jain</option>
+                <option>Muslim (Halal)</option>
+            </select>
+        </div>
+
+        <button type="submit"
+            class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold">
+            Confirm Preferences
+        </button>
+
+    </form>
+
+    <p id="success" class="hidden mt-6 text-green-600 text-center font-medium">
+        Preferences saved successfully ✈️
+    </p>
+
+</div>
+
+<script>
+document.getElementById("extrasForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const seat = document.getElementById("seat").value;
+    const meal = document.getElementById("meal").value;
+
+    console.log("Seat:", seat);
+    console.log("Meal:", meal);
+
+    document.getElementById("success").classList.remove("hidden");
+});
+</script>
+
+</body>
+</html>
