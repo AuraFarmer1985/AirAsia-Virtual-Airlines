@@ -705,10 +705,24 @@ style="
             }
         });
     </script>
-    
+    <script>
+document.getElementById("bookingExtras").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const seat = document.getElementById("seat").value;
+    const meal = document.getElementById("meal").value;
+
+    console.log("Seat:", seat);
+    console.log("Meal:", meal);
+
+    document.getElementById("bookingSuccess").classList.remove("hidden");
+});
+</script>
+
 </body>
 
 </html>
+
 
 
 
