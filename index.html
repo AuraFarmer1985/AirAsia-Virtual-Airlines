@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirAsia Virtual Airlines</title>
@@ -30,6 +31,8 @@
             }
         }
     </script>
+  
+ 
 
     <!-- ========================================== -->
     <!--      USER CONFIGURATION SECTION            -->
@@ -37,11 +40,11 @@
     <!-- ========================================== -->
     <script>
         const fleetImages = {
-            "a320_200": "",      // Paste link for A320-200 here
-            "a320_neo": "",      // Paste link for A320 Neo here
+            "a320_200": "",   // Paste link for A320-200 here
+            "a320_neo": "",   // Paste link for A320-neo here  
             "a330_232": "",      // Paste link for A330-232 here
             "a330_common": "",   // Paste link for A330-200/300 here
-            "a330_neo": ""       // Paste link for A330neo here
+            "a330_neo": ""       // Paste link for A330-neo here
         };
     </script>
     
@@ -100,7 +103,6 @@
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">Home</a>
                     <a href="#about" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">About</a>
                     <a href="#news" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">News</a>
                     <a href="#fleet" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">Fleet</a>
@@ -120,7 +122,17 @@
    <i class="fa-brands fa-discord"></i>
    Discord
 </a>
-                </div>
+<button onclick="googleSignIn()"
+  class="px-1 py-1 bg-blue-600 text-black rounded-lg font-bold">
+  Sign in 
+</button>
+
+
+<div id="userBox" class="ml-4 text-white font-semibold"></div>
+
+<div id="userBox" class="ml-4 text-white font-semibold"></div>
+
+
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
@@ -150,7 +162,7 @@
     <section id="home"
   class="page-section relative min-h-screen overflow-hidden bg-cover bg-center pt-32 pb-24 md:pt-48 md:pb-32 px-4"
 style="
-    background-image: url('https://raw.githubusercontent.com/stupidperson-maker/AirAsia-VA-/main/images/Screenshot%202026-01-23%20103258-3840x2160.png');
+    background-image: url('https://raw.githubusercontent.com/stupidperson-maker/AirAsia-VA-/main/images/Gemini_Generated_Image_1x843q1x843q1x84.png');
     filter: none;
   ">
 
@@ -535,57 +547,11 @@ style="
             Loading…
         </iframe>
     </div>
+
 </section>
-      <!-- PAGE: PREFERENCES -->
-<section id="bookings" class="page-section hidden-page pt-32 pb-24 bg-gray-50 min-h-screen">
-  <div class="max-w-3xl mx-auto px-4">
+    
 
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">
-      Flight Preferences
-    </h2>
-
-    <form id="bookingExtras" class="bg-white p-10 rounded-2xl shadow-lg space-y-8">
-
-      <!-- Seat Selection -->
-      <div>
-        <label class="block text-lg font-semibold mb-3">Seat Preference</label>
-        <select id="seat" class="w-full border rounded-xl p-4 text-lg">
-          <option value="Window">Window</option>
-          <option value="Aisle">Aisle</option>
-          <option value="Middle">Middle</option>
-          <option value="Exit Row">Exit Row</option>
-        </select>
-      </div>
-
-      <!-- Meal Selection -->
-      <div>
-        <label class="block text-lg font-semibold mb-3">Meal Preference</label>
-        <select id="meal" class="w-full border rounded-xl p-4 text-lg">
-          <option value="Vegetarian">Vegetarian</option>
-          <option value="Non-Vegetarian">Non-Vegetarian</option>
-          <option value="Vegan">Vegan</option>
-          <option value="Jain">Jain</option>
-          <option value="Muslim (Halal)">Muslim (Halal)</option>
-        </select>
-      </div>
-
-      <button type="submit"
-        class="w-full bg-aa-red hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg transition">
-        Save Preferences
-      </button>
-
-      <p id="bookingSuccess"
-         class="hidden text-center text-green-600 font-semibold text-lg">
-        Preferences saved successfully ✈️
-      </p>
-
-    </form>
-
-  </div>
-</section>
-
-
-
+      
     </main>
 
     <!-- Footer (Global) -->
@@ -617,8 +583,7 @@ style="
                     <h4 class="font-bold mb-4">Connect</h4>
                     <div class="flex space-x-4">
                         <a href="https://discord.gg/KJBQ4NNM5" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-aa-red transition"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-aa-red transition"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-aa-red transition"><i class="fa-brands fa-instagram"></i></a>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -704,32 +669,47 @@ style="
                 showPage('home');
             }
         });
-    </script>
-    <script>
-document.getElementById("bookingExtras").addEventListener("submit", function(e) {
-    e.preventDefault();
 
-    const seat = document.getElementById("seat").value;
-    const meal = document.getElementById("meal").value;
+</script>
+ 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup } 
+    from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 
-    console.log("Seat:", seat);
-    console.log("Meal:", meal);
+  const firebaseConfig = {
+    apiKey: "AIzaSyCot7QaitMumVyjoTNzRcYHWbAeBA4SjQs",
+    authDomain: "sign-in-28323.firebaseapp.com",
+    projectId: "sign-in-28323",
+    storageBucket: "sign-in-28323.firebasestorage.app",
+    messagingSenderId: "94732970776",
+    appId: "1:94732970776:web:9a94e6b73235afcecd4c6d"
+  };
 
-    document.getElementById("bookingSuccess").classList.remove("hidden");
-});
+  // Init Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // Expose function to button
+  window.googleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      alert("Signed in as " + user.displayName);
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  };
 </script>
 
+
+
+    
 </body>
 
 </html>
-
-
-
-
-
-
-
-
 
 
 
