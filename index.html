@@ -107,7 +107,7 @@
                     <a href="#news" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">News</a>
                     <a href="#fleet" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">Fleet</a>
                     <a href="#routes" class="nav-link text-gray-700 hover:text-aa-red font-medium transition">Routes</a>
-                    <a href="#pilot-form" class="nav-link bg-aa-red text-white px-3 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg transform hover:scale-105">
+                    <a href="#pilot-form" class="nav-link bg-aa-red text-white px-2 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg transform hover:scale-105">
     Pilot Application
 </a>
 
@@ -123,9 +123,20 @@
    Discord
 </a>
 <button onclick="googleSignIn()"
-  class="px-2 py-1 bg-blue-600 text-gold rounded-lg font-bold">
+  class="px-2 py-1 bg-blue-600 text-black rounded-lg font-italic">
   Sign in 
 </button>
+                  <!-- USER PROFILE PHOTO -->
+<img
+  id="profilePhoto"
+  src=""
+  alt="Profile"
+  class="hidden w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer"
+/>
+
+
+
+<span id="userBox" class="ml-4 text-sm font-medium text-white"></span>
 
 
 <div id="userBox" class="ml-4 text-white font-semibold"></div>
@@ -702,30 +713,20 @@ style="
       alert(error.message);
     }
   };
-</script>
+  const profilePhoto = document.getElementById("profilePhoto");
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    profilePhoto.src = user.photoURL;
+    profilePhoto.classList.remove("hidden");
+  } else {
+    profilePhoto.classList.add("hidden");
+    profilePhoto.src = "";
+  }
+});
 
-
-    
+</script>    
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
